@@ -8,10 +8,7 @@ export class Lock {
 
 
   public lock(): void {
-
-    if (this.promise) {
-      throw new Error('cannot lock again before unlocking');
-    }
+    if (this.promise) return;
 
     this.promise = new Promise(resolve => {
       this.resolver = resolve;

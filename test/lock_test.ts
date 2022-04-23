@@ -124,12 +124,21 @@ Deno.test('multiple locks', async () => {
 
 });
 
-Deno.test('locking twice', () => {
+Deno.test('locking twice', async () => {
 
   const lock = new Lock();
+  const startTime = Date.now();
+
 
   lock.lock();
+  lock.lock();
+  setTimeout(() => lock.unlock(), 1000);
 
-  assertThrows(() => lock.lock());
+
+  await lock.knock();
+
+
+  assert(Date.now() - startTime > 1000);
+  assert(Date.now() - startTime < 1100);
 
 });
