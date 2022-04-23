@@ -1,4 +1,4 @@
-import { assert, assertThrows } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { assert } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
 import { Lock } from '../mod.ts';
 
